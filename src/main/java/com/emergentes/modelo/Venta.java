@@ -9,17 +9,8 @@ public class Venta {
     private int id_producto;
     private int cantidad;
     private Date fecha;
-    private float precio;
 
     public Venta() {
-    }
-
-    public float getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(float precio) {
-        this.precio = precio;
     }
 
     public int getId_venta() {
@@ -64,7 +55,9 @@ public class Venta {
 
     @Override
     public String toString() {
-        return "Venta{" + "id_venta=" + id_venta + ", id_cliente=" + id_cliente + ", id_producto=" + id_producto + ", cantidad=" + cantidad + ", fecha=" + fecha + ", precio=" + precio + '}';
+        return "Venta{" + "id_venta=" + id_venta + ", id_cliente=" + id_cliente + ", id_producto=" + id_producto + ", cantidad=" + cantidad + ", fecha=" + fecha + '}';
     }
+
+   
 
 }
