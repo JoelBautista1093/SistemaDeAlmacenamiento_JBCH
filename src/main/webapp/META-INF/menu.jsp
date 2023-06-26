@@ -9,7 +9,7 @@
         <a class="nav-link <%= (opcion.equals("clientes") ? "active" : "")%>" href="ClienteControlador">CLIENTES</a> 
     </li>
     <li class="nav-item">
-        <a class="nav-link <%= (opcion.equals("ventas") ? "active" : "")%>" href="ventas.jsp">VENTAS</a>
+        <a class="nav-link <%= (opcion.equals("ventas") ? "active" : "")%>" href="VentaControlador">VENTAS</a>
     </li>
     <li class="nav-item">
         <a class="nav-link <%= (opcion.equals("usuarios") ? "active" : "")%>" href="UsuarioControlador">USUARIOS</a>

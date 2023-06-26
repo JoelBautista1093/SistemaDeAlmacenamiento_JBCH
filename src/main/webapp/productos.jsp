@@ -13,9 +13,9 @@
         <div class="container">
             <br>
             <div>
-                <img src="https://www.upea.bo/assets/img_institucion/ins_logo_1607438579.png" width="130" height="130">
+                <img src="https://www.upea.bo/assets/img_institucion/ins_logo_1607438579.png" width="80" height="80">
 
-                <img src="https://inscripcionessistemas.upea.bo/assets/frontend/educomp/v2.1/images/escudo.png" width="120" height="120" style="float: right;">
+                <img src="https://inscripcionessistemas.upea.bo/assets/frontend/educomp/v2.1/images/escudo.png" width="70" height="70" style="float: right;">
             </div>
             <div>
                 <h1 style="text-align: center;">SISTEMA DE INVENTARIO</h1> 
