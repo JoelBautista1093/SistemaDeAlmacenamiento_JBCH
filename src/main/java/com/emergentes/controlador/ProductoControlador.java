@@ -1,9 +1,10 @@
-
 package com.emergentes.controlador;
 
 import com.emergentes.dao.ProductoDAO;
 import com.emergentes.dao.ProductoDAOimpl;
+import com.emergentes.modelo.Categoria;
 import com.emergentes.modelo.Producto;
+import com.emergentes.modelo.SubCategoria;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -20,21 +21,37 @@ public class ProductoControlador extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
-            Producto cli = new Producto();
+
+            
+
+            Producto pro = new Producto();
             int id;
             ProductoDAO dao = new ProductoDAOimpl();
+
+            List<Categoria> lista_categorias = null;
+            List<SubCategoria> lista_subcategorias = null;
+
             String action = (request.getParameter("action") != null) ? request.getParameter("action") : "view";
-            
-            
+
             switch (action) {
                 case "add":
-                    request.setAttribute("producto", cli);
+                    lista_categorias = dao.getAllcat();
+                    //lista_subcategorias=dao.getAllByIdCat();
+                    request.setAttribute("lista_categorias", lista_categorias);
+                    request.setAttribute("lista_subcategorias", lista_subcategorias);
+                    request.setAttribute("producto", pro);
                     request.getRequestDispatcher("frmproductos.jsp").forward(request, response);
                     break;
                 case "edit":
+                    //lista_categorias = dao.getAllcat();
+
+                    //lista_subcategorias=dao.getAllByIdCat();
                     id = Integer.parseInt(request.getParameter("id"));
-                    cli = dao.getById(id);
-                    request.setAttribute("producto", cli);
+
+                    pro = dao.getById(id);
+                    request.setAttribute("producto", pro);
+                    //request.setAttribute("lista_categorias", lista_categorias);
+                    //request.setAttribute("lista_subcategorias", lista_subcategorias);
                     request.getRequestDispatcher("frmproductos.jsp").forward(request, response);
                     break;
                 case "delete":
@@ -42,23 +59,27 @@ public class ProductoControlador extends HttpServlet {
                     dao.delete(id);
                     response.sendRedirect("ProductoControlador");
                     break;
+                case "mostrar":
+                    id = Integer.parseInt(request.getParameter("id"));
+                    dao.delete(id);
+                    response.sendRedirect("ProductoControlador");
+                    break;
                 case "view":
-                   //obtener la lista de registros
+                    //obtener la lista de registros
                     List<Producto> lista = dao.getAll();
                     request.setAttribute("productos", lista);
                     request.getRequestDispatcher("productos.jsp").forward(request, response);
                     break;
             }
         } catch (Exception ex) {
-            System.out.println("Error"+ ex.getMessage());
+            System.out.println("Error" + ex.getMessage());
         }
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-    }
 
+    }
 
 }

@@ -13,7 +13,7 @@ public class UsuarioDAOimpl extends ConexionDB implements UsuarioDAO {
     public void insert(Usuario usuario) throws Exception {
         try {
             this.conectar();
-            PreparedStatement ps = this.conn.prepareStatement("INSERT INTO productos (nombre,apellido,ci,correo,password,celular) values (?,?,?,?,SHA1(?),?)");
+            PreparedStatement ps = this.conn.prepareStatement("INSERT INTO usuarios (nombre,apellido,ci,correo,password,celular) values (?,?,?,?,SHA1(?),?)");
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellido());
             ps.setString(3, usuario.getCi());
@@ -32,7 +32,7 @@ public class UsuarioDAOimpl extends ConexionDB implements UsuarioDAO {
     public void update(Usuario usuario) throws Exception {
         try {
             this.conectar();
-            PreparedStatement ps = this.conn.prepareStatement("UPDATE productos SET nombre=?,apellido=?,ci=?,correo=?,password=?,celular=? WHERE id=? ");
+            PreparedStatement ps = this.conn.prepareStatement("UPDATE usuarios SET nombre=?,apellido=?,ci=?,correo=?,password=?,celular=? WHERE id=? ");
             ps.setString(1, usuario.getNombre());
             ps.setString(2, usuario.getApellido());
             ps.setString(3, usuario.getCi());
@@ -72,7 +72,9 @@ public class UsuarioDAOimpl extends ConexionDB implements UsuarioDAO {
             String sql = "SELECT * FROM usuarios WHERE id = ?";
             PreparedStatement ps = this.conn.prepareStatement(sql);
             ps.setInt(1, id);
+            
             ResultSet rs = ps.executeQuery();
+            
             if (rs.next()) {
                 usu.setId(rs.getInt("id"));
                 usu.setNombre(rs.getString("nombre"));

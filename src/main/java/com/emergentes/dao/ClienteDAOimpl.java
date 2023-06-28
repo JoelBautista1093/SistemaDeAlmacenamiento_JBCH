@@ -38,7 +38,7 @@ public class ClienteDAOimpl extends ConexionDB implements ClienteDAO {
             ps.setString(3, cliente.getCi());
             ps.setString(4, cliente.getCorreo());
             ps.setString(5, cliente.getCelular());
-            ps.setInt(4, cliente.getId());
+            ps.setInt(6, cliente.getId());
             ps.executeUpdate();
         } catch (Exception e) {
             throw e;
@@ -68,15 +68,15 @@ public class ClienteDAOimpl extends ConexionDB implements ClienteDAO {
             this.conectar();
             PreparedStatement ps = this.conn.prepareStatement("SELECT * FROM clientes WHERE id = ?");
             ps.setInt(1, id);
-
+            
             ResultSet rs = ps.executeQuery();
-
+            
             if (rs.next()) {
                 cli.setId(rs.getInt("id"));
                 cli.setNombre(rs.getString("nombre"));
-                cli.setCorreo(rs.getString("apellido"));
-                cli.setCelular(rs.getString("ci"));
-                cli.setCelular(rs.getString("correo"));
+                cli.setApellido(rs.getString("apellido"));
+                cli.setCi(rs.getString("ci"));
+                cli.setCorreo(rs.getString("correo"));
                 cli.setCelular(rs.getString("celular"));
             }
         } catch (Exception e) {

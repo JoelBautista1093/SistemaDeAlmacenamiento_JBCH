@@ -30,39 +30,42 @@
     <body>
         <br>
         <div>
-            <h1 id="h1">Formulario Clientes</h1>
+            <h1 id="h1">Formulario Usuarios</h1>
         </div>
         <div class="container">
             <div></div>
             <div>
-                <form class="row g-3" method="POST">
-                    <input type="hidden" name="id" value="${clientes.id}">
+                <form class="row g-3" method="post">
+                    <input type="hidden" name="id" value="${usuario.id}">
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" name="nombre" value="${cliente.nombre}" placeholder="Escriba su Nombre">
+                        <input type="text" class="form-control" name="nombre" value="${usuario.nombre}" placeholder="Ingrese su nombre">
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" name="apellido" value="${cliente.apellido}" placeholder="Ingrese su apellido">
-                    </div>
-                    <div class="col-12">
-                        <label for="inputAddress" class="form-label">Carnet</label>
-                        <input type="text" class="form-control" name="ci" value="${cliente.ci}" placeholder="Ingrese su carnet de identidad">
-                    </div>
-                    <div class="col-12">
-                        <label for="inputEmail4" class="form-label">Email</label>
-                        <input type="email" class="form-control" name="correo" value="${cliente.correo}" placeholder="Ingrese su correo">
+                        <input type="text" class="form-control" name="apellido" value="${usuario.apellido}" placeholder="Ingrese su apellido">
                     </div>
                     <div class="col-12">
                         <label for="inputAddress" class="form-label">Celular</label>
-                        <input type="text" class="form-control" name="celular" value="${cliente.celular}" placeholder="Ingrese su Celular">
+                        <input type="text" class="form-control" name="celular" value="${usuario.celular}" placeholder="Ingrese su celular">
                     </div>
-                    
+                    <div class="col-12">
+                        <label for="inputEmail4" class="form-label">Carnet</label>
+                        <input type="text" class="form-control" name="ci" value="${usuario.ci}" placeholder="Ingrese su numero de carnet">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Email</label>
+                        <input type="email" class="form-control" name="correo" value="${usuario.correo}" placeholder="Ingrese su Correo">
+                    </div>
+                    <div class="col-12">
+                        <label for="inputAddress" class="form-label">Contraseña</label>
+                        <input type="password" class="form-control" name="password" value="${usuario.password}" placeholder="Ingrese su Contraseña">
+                    </div>
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Enviar</button>
-                        <a href="ClienteControlador" style="float: right;" class="btn btn-danger">Cancelar</a>
+                        <a href="UsuarioControlador" style="float: right;" class="btn btn-danger">Cancelar</a>
                     </div>
-                </form>                    
+                </form>
             </div>
             <div></div>
         </div>

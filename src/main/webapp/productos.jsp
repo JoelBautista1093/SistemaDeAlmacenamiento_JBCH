@@ -1,3 +1,8 @@
+<%
+    if(session.getAttribute("login") != "OK"){
+        response.sendRedirect("Login.jsp");
+    }
+%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,7 +16,7 @@
         <style>
             /* Estilos generales del sidebar */
             .sidebar {
-                width: 200px;
+                width: 270px;
                 height: 100%;
                 background-color: #333;
                 color: #fff;
@@ -93,25 +98,30 @@
         <div class="container">
             <div class="left-div">
                 <div class="sidebar">
-                    <h2>Menú</h2>
-                    <a href="#" class="active">Inicio</a>
-                    <a href="#">Acerca de</a>
-                    <a href="#">Servicios</a>
-                    <a href="#">Contacto</a>
+                    <table class="table">
+                        <tbody class="table-dark">
+                            <tr>
+                                <th scope="row">DATOS:</th>
+                            </tr>
+                            <tr>
+                                <td scope="row">${item.id}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
             <div class="right-div">
-                
+
                 <div> 
                     <h2 class="titulo2">Tienda de Productos de Limpieza CleanMaster</h2> 
                 </div>
+                <div style="float: right;"><a href="LogOut?action=out" class="btn btn-danger">CERRAR SESSION</a></div>
 
-                
                 <jsp:include page="META-INF/menu.jsp">
                     <jsp:param name="opcion" value="productos" />
                 </jsp:include>
                 <br>
-                <a href="#" class="btn btn-primary btn-sm"><i class="fa-solid fa-circle-plus"></i> Nuevo </a>
+                <a href="ProductoControlador?action=add" class="btn btn-primary btn-sm"><i class="fa-solid fa-circle-plus"></i> Nuevo </a>
                 <br><br>
                 <table class="table table-dark table-striped">
                     <tr align="center">
@@ -139,7 +149,7 @@
                                     <i class="fa-regular fa-trash-can"></i>
                                 </a>
                             </td>
-                            <td><a href="#"><i class="fa-regular fa-folder-open"></i></a></td>
+                            <td><a href="#"><i class="fa-solid fa-eye"></i></a></td>
                         </tr>
                     </c:forEach>
                 </table>

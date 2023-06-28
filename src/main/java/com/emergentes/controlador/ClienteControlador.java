@@ -30,13 +30,13 @@ public class ClienteControlador extends HttpServlet {
             switch (action) {
                 case "add":
                     request.setAttribute("cliente", cli);
-                    request.getRequestDispatcher("frmcliente.jsp").forward(request, response);
+                    request.getRequestDispatcher("frmclientes.jsp").forward(request, response);
                     break;
                 case "edit":
                     id = Integer.parseInt(request.getParameter("id"));
                     cli = dao.getById(id);
                     request.setAttribute("cliente", cli);
-                    request.getRequestDispatcher("frmcliente.jsp").forward(request, response);
+                    request.getRequestDispatcher("frmclientes.jsp").forward(request, response);
                     break;
                 case "delete":
                     id = Integer.parseInt(request.getParameter("id"));
@@ -59,6 +59,40 @@ public class ClienteControlador extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        int id = Integer.parseInt(request.getParameter("id"));
+        String nombre = request.getParameter("nombre");
+        String apellido = request.getParameter("apellido");
+        String correo = request.getParameter("correo");
+        String celular = request.getParameter("celular");
+        String ci = request.getParameter("ci");
+        
+        Cliente cli = new Cliente();
+        
+        cli.setId(id);
+        cli.setNombre(nombre);
+        cli.setCorreo(correo);
+        cli.setCelular(celular);
+        cli.setApellido(apellido);
+        cli.setCi(ci);
+        
+        ClienteDAO dao = new ClienteDAOimpl();
+        
+        if(id==0){
+            try {
+                //nuevoREgistro
+                dao.insert(cli);
+            } catch (Exception ex) {
+                System.out.println("Error nuevo Registro :" + ex.getMessage());
+            }
+        }else{
+            try {
+                //editer R
+                dao.update(cli);
+            } catch (Exception ex) {
+                System.out.println("Error edicion Registro: "+ ex.getMessage());
+            }
+        }
+        response.sendRedirect("ClienteControlador"); 
     }
 
 }

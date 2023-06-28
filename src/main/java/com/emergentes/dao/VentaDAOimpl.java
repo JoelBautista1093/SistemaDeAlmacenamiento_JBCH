@@ -1,5 +1,7 @@
 package com.emergentes.dao;
 
+import com.emergentes.modelo.Categoria;
+import com.emergentes.modelo.SubCategoria;
 import com.emergentes.modelo.Venta;
 import com.emergentes.utiles.ConexionDB;
 import java.sql.PreparedStatement;
@@ -33,7 +35,7 @@ public class VentaDAOimpl extends ConexionDB implements VentaDAO {
     public void update(Venta venta) throws Exception {
         try {
             this.conectar();
-            String sql = "UPDATE ventas SET id_cliente=?,id_producto=?,cantidad=?,fecha=? WHERE venta_id=?";
+            String sql = "UPDATE ventas SET id_cliente=?,id_producto=?,cantidad=?,fecha=? WHERE id_venta=?";
             PreparedStatement ps = this.conn.prepareStatement(sql);
             ps.setInt(1, venta.getId_cliente());
             ps.setInt(2, venta.getId_producto());
@@ -52,7 +54,7 @@ public class VentaDAOimpl extends ConexionDB implements VentaDAO {
     public void delete(int id) throws Exception {
         try {
             this.conectar();
-            String sql = "DELETE FROM ventasWHERE venta_id=?";
+            String sql = "DELETE FROM ventas WHERE id_venta=?";
             PreparedStatement ps = this.conn.prepareStatement(sql);
             ps.setInt(1, id);
             ps.executeUpdate();
@@ -68,7 +70,7 @@ public class VentaDAOimpl extends ConexionDB implements VentaDAO {
         Venta v = new Venta();
         try {
             this.conectar();
-            String sql = "SELECT * FROM ventas WHERE id = ?";
+            String sql = "SELECT * FROM ventas WHERE id_venta = ?";
             PreparedStatement ps = this.conn.prepareStatement(sql);
             ps.setInt(1, id);
             ResultSet rs = ps.executeQuery();
@@ -123,5 +125,7 @@ public class VentaDAOimpl extends ConexionDB implements VentaDAO {
         }
         return lista;
     }
+
+ 
 
 }

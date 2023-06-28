@@ -5,8 +5,8 @@ public class Producto {
     private int id;
     private String nombre;
     private String descripcion;
-    private String categoria;
-    private String subCategoria;
+    private int categoria;
+    private int subCategoria;
     private String marca;
     private float precio;
     private String ubicacion;
@@ -48,21 +48,7 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public String getCategoria() {
-        return categoria;
-    }
 
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
-    }
-
-    public String getSubCategoria() {
-        return subCategoria;
-    }
-
-    public void setSubCategoria(String subCategoria) {
-        this.subCategoria = subCategoria;
-    }
 
     public String getMarca() {
         return marca;
@@ -96,9 +82,22 @@ public class Producto {
         this.stock = stock;
     }
 
-    @Override
-    public String toString() {
-        return "Producto{" + "id=" + id + ", nombre=" + nombre + ", descripcion=" + descripcion + ", categoria=" + categoria + ", subCategoria=" + subCategoria + ", marca=" + marca + ", precio=" + precio + ", ubicacion=" + ubicacion + ", stock=" + stock + ", cantidad=" + cantidad + '}';
+    public int getCategoria() {
+        return categoria;
     }
+
+    public void setCategoria(int categoria) {
+        this.categoria = categoria;
+    }
+
+    public int getSubCategoria() {
+        return subCategoria;
+    }
+
+    public void setSubCategoria(int subCategoria) {
+        this.subCategoria = subCategoria;
+    }
+
+
 
 }

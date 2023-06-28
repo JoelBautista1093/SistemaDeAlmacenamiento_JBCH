@@ -1,6 +1,8 @@
 
 package com.emergentes.dao;
 
+import com.emergentes.modelo.Categoria;
+import com.emergentes.modelo.SubCategoria;
 import com.emergentes.modelo.Venta;
 import java.util.List;
 
